@@ -1,0 +1,21 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+    <div class="register">
+        <h2>Lista de Amigos</h2>
+        
+        <ul>
+        {% for i in amistad1 %}
+        <label><a href="{% url 'polls:perfilext' usuario=i.uid2.uid%}"><div class="perfil">{{i.uid2.uid}}</label></div>
+        {% endfor %}
+        {% for j in amistad2 %}
+        <label><a href="{% url 'polls:perfilext' usuario=j.uid1.uid%}"><div class="perfil">{{j.uid1.uid}}</label></div>
+        {% endfor %}
+        </ul>
+
+    </div>
+</div>
+
+{%endblock%}

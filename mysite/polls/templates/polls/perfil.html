@@ -1,0 +1,35 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+    <div class="register">
+        <h2>Perfil</h2>
+        {%if request.user.is_authenticated%}
+            Nombre de usuario: {{ alumno.uid }}<br>
+            Nombre: {{ alumno.name }}<br>
+            Apellidos: {{ alumno.surname }}<br>
+            Correo electrónico: {{ alumno.email }}<br>
+            PINFCoins: {{ alumno.coins }}<br>
+            Carrera: {{ alumno.career }}<br>
+        <h2> Tus asignaturas: </h2>
+            {%if latest_asignatura_list%}
+                <ul>
+                    {% for asignatura in latest_asignatura_list %}
+                        <li>{{ asignatura.sid.sid }} - {{ asignatura.sid.name }}</li>
+                    {% endfor %}
+                </ul>
+            {%else%}
+                No estás matriculado de ninguna asignatura.
+            {%endif%}
+            <ul>
+                <a href={%url 'polls:subirmatricula'%}><div class="perfil">Subir nueva matrícula.</div></a>
+                <a href={%url 'polls:subirexpediente'%}><div class="perfil">Subir nuevo expediente.</div></a>
+                <a href={%url 'polls:eliminarcuenta'%}><div class="perfil">Eliminar cuenta.</div></a>
+            </ul>
+        {%endif%}
+        </div>
+    </div> 
+{%endblock%}
+</body>
+</html> 

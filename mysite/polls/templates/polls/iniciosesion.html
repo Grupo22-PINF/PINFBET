@@ -1,0 +1,19 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+    <div class="register">
+        <h1>INICIAR SESIÓN</h1>
+        <form action="{% url 'polls:login' %}" method="post">
+            {% csrf_token %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <input class="controls" placeholder="Ingrese su usuario" id="usuario" name="usuario" type="text" maxlength="20" required>
+            <input class="controls" placeholder="Ingrese su contraseña"id="contrasena" name="contrasena" type="password" maxlength="20" required>
+            <input class="register-button" type="submit" value="Iniciar sesión">
+            </form>
+</div>
+</div> 
+</body>
+{%endblock%}
+</html> 

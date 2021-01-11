@@ -1,0 +1,35 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+<div class="page">
+    <div class="register">
+        {% if noamistad and not alumno.uid == request.user.username%}
+                <form action="{% url 'polls:mostrarusuario' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" id="usuario" name="usuario" value="{{alumno.uid}}">
+                    <input type="hidden" id="perfil" name="perfil" value="perfil">
+                    <input class="register-button" type="submit" value="Enviar solicitud de amistad">
+                </form>
+        {%endif%}
+        <h2>Perfil</h2>
+        {%if request.user.is_authenticated%}
+            Nombre de usuario: {{ alumno.uid }}<br>
+            Nombre: {{ alumno.name }}<br>
+            Apellidos: {{ alumno.surname }}<br>
+            Carrera: {{ alumno.career }}<br>
+        <h2> Asignaturas matriculadas: </h2>
+            {%if latest_asignatura_list%}
+                <ul>
+                    {% for asignatura in latest_asignatura_list %}
+                        <li>{{ asignatura.sid.sid }} - {{ asignatura.sid.name }}</li>
+                    {% endfor %}
+                </ul>
+            {%else%}
+                Este alumno no está matriculado de ninguna asignatura.
+            {%endif%}
+        {%endif%}
+        </div>
+    </div> 
+    {%endblock%}
+</body>
+</html> 

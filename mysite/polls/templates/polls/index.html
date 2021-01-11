@@ -1,0 +1,41 @@
+{% extends 'polls/nav.html'%}
+{% block content %}
+    <div class="page">
+        <div class="content">
+            {%if request.user.is_authenticated%}
+            <h2> Tus apuestas </h2>
+                {% if latest_apuesta_list %}
+                    <ul>
+                    {% for apuesta in latest_apuesta_list %}
+                        <li><a href={% url 'polls:detail' apuesta.sid.sid apuesta.uid.uid %}>{{ apuesta.sid.name }} - {{ apuesta.amount }} PINFCoins a que sacas al menos un {{apuesta.nminima}}.</a></li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No hay apuestas realizadas por ti.</p>
+                {% endif %}
+            <h2> Apuestas de tus amigos </h2>
+            {% if latest_apuestaamigo_list %}
+                    <ul>
+                    {% for apuesta in latest_apuestaamigo_list %}
+                        <li><a href={% url 'polls:detail' apuesta.sid.sid apuesta.uid.uid %}>{{apuesta.uid.uid}}: {{ apuesta.sid.name }} - {{apuesta.amount}} PINFCoins a que saca al menos un {{apuesta.nminima}}.</a></li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No hay apuestas realizadas por tus amigos.</p>
+                {% endif %}
+            {%else%}
+                <h1>¡BIENVENIDOS A PINFBET!</h1>
+                <p>
+                PINFBet es una aplicación web de apuestas estudiantiles desarrollada por el grupo 22 de la asignatura de Proyectos Informáticos de la Universidad de Cádiz. <br><br>
+
+                El grupo 22 está compuesto por: 
+                <ul>
+                    <li><a href={% url 'polls:perfilext' usuario="Miju"%}>Eliseo Fernández Monroy</a></li>
+                    <li><a href={% url 'polls:perfilext' usuario="renjian"%}>Antonio de los Reyes Pérez</a></li>
+                    <li><a href={% url 'polls:perfilext' usuario="ivan"%}>Iván López Ceballos</a></li>
+                    <li><a href={% url 'polls:perfilext' usuario="_paquito"%}>Francisco Chanivet Sánchez</a></li>
+                </p>
+            {%endif%}
+        </div>
+    </div> 
+{% endblock %}

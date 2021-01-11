@@ -1,0 +1,16 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+<div class="page">
+    <div class="register">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        Estás en la apuesta de {{apuesta.uid.uid}} sobre {{apuesta.sid.name}} ({{apuesta.sid.sid}}).<br>
+        {{apuesta.uid.uid}} apostó {{apuesta.amount}} PINFCoins a que saca al menos un {{apuesta.nminima}}.<br><br>
+        {% if apuesta.uid.uid == request.user.username %}
+        <a href={% url 'polls:apostarasig' apuesta.sid.sid%}>Modificar esta apuesta.</a><br>
+        {%endif%}
+    </div>
+</div> 
+</body>
+{%endblock%}
+</html> 

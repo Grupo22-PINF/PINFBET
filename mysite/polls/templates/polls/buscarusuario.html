@@ -1,0 +1,16 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+    <div class="page">
+        <div class="register">
+          <h1>BUSCAR USUARIO</h1>
+          <form action="{% url 'polls:buscarusuario' %}" method="post">
+              {% csrf_token %}
+              {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+              <input class="controls" placeholder="Ingrese el usuario a buscar usuario"id="user" name="user" type="text" maxlength="20" required></li>
+              <input class="register-button"type="submit" value="Aceptar">
+          </form>
+        </div>
+
+{%endblock%}
+</body>

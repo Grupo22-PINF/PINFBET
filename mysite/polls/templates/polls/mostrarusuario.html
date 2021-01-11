@@ -1,0 +1,22 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+    <div class="page">
+        <div class="register">
+            <h1>BUSCAR USUARIO</h1>
+
+            {%if usuario%}
+            {%for u in usuario%}                
+                <a href="{% url 'polls:perfilext' usuario=u.uid%}"><div class="perfil">{{u.uid}}</label></div></a>
+            {% endfor %}
+
+            {% else %}
+
+                <p>Ningún usuario coincide con el criterio de búsqueda.</p>
+
+            {% endif %}
+
+        </div>    
+        
+{%endblock%}

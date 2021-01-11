@@ -1,0 +1,34 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+    <div class="register">
+        <h1>REGISTRO</h1>
+        <form action="{% url 'polls:registro' %}" method="post">
+            {% csrf_token %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <input class="controls" placeholder="Ingrese su usuario" id="usuario" name="usuario" type="text" maxlength="20" required>
+            <input class="controls" placeholder="Ingrese su nombre"id="nombre" name="nombre" type="text" maxlength="20" required>
+            <input class="controls" placeholder="Ingrese sus apellidos" id="apellidos" name="apellidos" type="text" maxlength="30" required>
+            <input class="controls" placeholder="Ingrese su email"id="email" name="email" type="text" maxlength="30" required>
+            <input class="controls" placeholder="Ingrese su contraseña"id="contrasena" name="contrasena" type="password" maxlength="20" required>
+            <input class="controls" placeholder="Vuelva a introducir la contraseña"id="contrasena2" name="contrasena2" type="password" maxlength="20" required></li>
+            <select class="controls" placeholder="Seleccione su carrera"id="carrera" name="carrera">
+                <option value='Grado en Enfermería'>Grado en Enfermería</option>
+                <option value='Grado en Ingeniería Eléctrica'>Grado en Ingeniería Eléctrica</option>
+                <option value='Grado en Ingeniería Electrónica Industrial'>Grado en Ingeniería Electrónica Industrial</option>
+                <option value='Grado en Ingeniería en Diseño Industrial y Desarrollo del Producto'>Grado en Ingeniería en Diseño Industrial y Desarrollo del Producto</option>
+                <option value='Grado en Ingeniería en Tecnologías Industriales'>Grado en Ingeniería en Tecnologías Industriales</option>
+                <option value='Grado en Ingeniería Informática'>Grado en Ingeniería Informática</option>
+                <option value='Grado en Ingeniería Mecánica'>Grado en Ingeniería Mecánica</option>
+                <option value='Grado en Medicina'>Grado en Medicina</option>
+              </select>
+              <input type="checkbox" name="ac_politica" value="OK" required/>He leído y acepto la <a href="{% url 'polls:politica'%}" target=_blank>Política de Privacidad y los Términos del Servicio</a>.
+              <input class="register-button" type="submit" value="Registrarse">
+            </form>
+</div>
+</div> 
+{%endblock%}
+</body>
+</html> 

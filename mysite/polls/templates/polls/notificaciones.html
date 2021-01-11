@@ -1,0 +1,23 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+    <div class="register">
+        <h1>Solicitudes de Amistad Pendientes</h1>
+        
+        {% for i in amistad %}
+       
+        <form action="{% url 'polls:notificaciones' %}" method="post">
+            {% csrf_token %}
+            {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+            <a href={% url 'polls:perfilext' usuario=i.uid1.uid %}%><label>{{i.uid1.uid}}</label></a>
+            <input type="hidden" id="emisor" name="emisor" value="{{i.uid1.uid}}">
+            <input class="si" type="submit" id="agregar" name="agregar" value="Aceptar" required></li>
+            <input class="no" type="submit" id="agregar" name="agregar" value="Rechazar" required></li>
+        </form>    
+
+        {% endfor %}    
+    </div>
+</div>
+{%endblock%}

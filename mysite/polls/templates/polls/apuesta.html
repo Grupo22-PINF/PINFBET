@@ -1,0 +1,29 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+    <div class="register">
+        <h1>{{ asignatura.sid }} - {{ asignatura.name }} </h1>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        <form action="{% url 'polls:apostarasig' asignatura.sid%}" method="post">
+        {% csrf_token %}
+        <label for="nminima">Sacaré como mínimo un:</label><br>
+        <select class="controls" name="nminima" id="nminima", name="nminima">
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select><br><br>
+        <label for="ncoins">Número de monedas que apuesto:</label><br>
+        <input class="controls" type="text" id="ncoins" name="ncoins" required>
+        <input class="register-button" type="submit" value="Apostar"><br><br>
+        </form>
+</div>
+</div> 
+{%endblock%}
+</body>
+</html> 

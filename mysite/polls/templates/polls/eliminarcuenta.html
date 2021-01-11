@@ -1,0 +1,23 @@
+{% extends 'polls/nav.html'%}
+
+{% block content %}
+
+<div class="page">
+  <div class="register">
+    <h1>ELIMINAR CUENTA</h1>
+    <form action="{% url 'polls:eliminarcuenta' %}" method="post">
+        {% csrf_token %}
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+          <input class="controls" placeholder="Introduce tu contraseña" id="contrasena" name="password1" type="password" maxlength="20" required>
+          <input class="controls" placeholder="Confirmar contraseña" id="confirmar_contrasena" name="password2" type="password" maxlength="20" required>
+          <input class="register-button" type="submit" value="Eliminar Cuenta">
+    </form>
+  </div>
+</div>
+{%endblock%}
+
+
+
+
+
+

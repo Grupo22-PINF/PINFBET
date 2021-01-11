@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<title>PINFBet</title>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/index.css' %}">
+<link rel="icon" href="{% static 'polls/LOGO2.png' %}" type="image/x-icon">
+</head>
+<body>
+
+{%if request.user.is_authenticated%}
+    <div class="titlecontainer">
+    <div class="title"><a href="{% url 'polls:index'%}"><img src="{% static "polls/LOGO.png" %}"></img></a></div><div class="buttons"><br><br><a class="button" href="{% url 'polls:profile'%}">Perfil</a><a class="button" href="{% url 'polls:logout'%}">Cerrar sesión</a></div>
+    </div>
+{%else%}
+    <div class="titlecontainer">
+    <div class="title"><a href="{% url 'polls:index'%}"><img src="{% static "polls/LOGO.png" %}"></img></a></img></div><div class="buttons"><br><br><a class="button" href="{% url 'polls:registro'%}">Registrarse</a><a class="button" href="{% url 'polls:login'%}">Iniciar Sesión</a></div>
+    </div>
+{%endif%}
+
+<div class="topnav">
+<ul><li><a href="{% url 'polls:aboutus'%}">Sobre nosotros</a></li><li><a href="{% url 'polls:contactanos'%}">Contáctanos</a></li><li><a href="{% url 'polls:politica'%}">Política de Privacidad y ToS</a></li></ul>
+</div>
+
+<div class="sidebar">
+  <a href="{% url 'polls:apuesta'%}">Apostar</a>
+  <a href="{% url 'polls:notificaciones'%}">Solicitudes de amistad</a>
+  <a href="{% url 'polls:buscarusuario'%}">Buscar Usuario</a>
+  <a href="{% url 'polls:veramigos'%}">Lista de amigos</a>
+</div>
+
+<div class="publibar">
+  <a href={{publi.url}} target=_blank><img src="{% static "polls/ads/"%}{{publi.image}}"></img></a>
+  <h5><a href="{% url 'polls:contactanos'%}">¿Quieres publicitarte?<br>
+  Contáctanos</a></h5>
+</div>
+    {% block content%}
+    {% endblock %}
+</body>
