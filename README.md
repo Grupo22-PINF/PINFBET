@@ -6,26 +6,10 @@ Este proyecto consiste en una página web, que se nos ha propuesto en una asigna
 
 # ¿Qué debo hacer antes para poder usar PINFBet?
 _Para ello primero debemos instalar el framework de [django](https://www.djangoproject.com/download) donde en su página web podemos obtener las instrucciones necesarias para descargar el framework._
-_Luego, para lanzar la página web de forma local sin problrmas, debemos ejecutar los siguientes comandos:_
+_Luego, para lanzar la página web de forma local sin problrmas, debemos ejecutar el siguiente comando desde el directorio raíz:_
 
   ``
-  pip install pyPDF2
-  ``
-  
-  ``
-  pip install pandas
-  ``
-  
-  ``
-  pip install xlrd
-  ``
-  
-  ``
-  pip install tabula
-  ``
-  
-  ``
-  pip install pillow
+  pip install -r requirements.txt
   ``
   
 # ¿Qué debo realizar para lanzar de forma local la página web?
