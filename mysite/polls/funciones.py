@@ -1,5 +1,5 @@
 import PyPDF2
-import tabula, xlrd
+import xlrd, tabula
 import pandas as pd
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404,redirect
@@ -7,15 +7,17 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout as do_logout, authenticate, login as do_login
 import os, logging
 from random import randint
+from tabula import convert_into
 
 from .models import Alumno,Asignatura,AlumAsig,Publicidad
 
-def ImportExp(ruta,usuario):
+def ImportExp(ruta,usuario): 
         # Creating a pdf file object
-        try:
-                tabula.io.convert_into(ruta,'media/conversion.csv', pages='all')
+	try:
+                convert_into(ruta,'media/conversion.csv', pages='all')
                 safe = pd.read_csv('media/conversion.csv',encoding='latin-1')
-                if (str(safe.columns[0])=='Asignaturas Matriculadas:'):
+                logging.debug(str(safe.columns[0]))
+                if (str(safe.columns[0])=='CÃ³digo  AsignaturaCred Dur Tip AÃ±o'):
                         file = pd.read_csv('media/conversion.csv',encoding='latin-1')
                         file.to_excel('media/conversion.xls', index = False,header=False) 
                         loc = 'media/conversion.xls'
@@ -23,24 +25,24 @@ def ImportExp(ruta,usuario):
                         sheet = wb.sheet_by_index(0)
                         count = 0;
                         for i in range(sheet.nrows):
-                                if (sheet.cell_value(i,3) != 'SUSPENSO') and (sheet.cell_value(i,3) != 'NO PRESENTADO') and (sheet.cell_value(i,3) != 'Unnamed: 2'):
+                                if (sheet.cell_value(i,1) != 'SUSPENSO') and (sheet.cell_value(i,1) != 'NO PRESENTADO') and (sheet.cell_value(i,1) != 'Unnamed: 2'):
                                         code = str(sheet.cell_value(i,0))[0:8]
                                         logging.debug(code)
                                         asig = Asignatura.objects.filter(sid=code)
                                         if asig.exists():                                       ##ASIGNATURA SOPORTADA POR LA PLATAFORMA
                                                 asig=Asignatura.objects.get(sid=code)
                                                 logging.debug("Asignatura OK")
-                                                nota = float(str(sheet.cell_value(i,4))[0])+(float(str(sheet.cell_value(i,4))[2])/10.0)
+                                                nota = float(str(sheet.cell_value(i,3))[0])+(float(str(sheet.cell_value(i,3))[2])/10.0)
                                                 AlAs=AlumAsig.objects.filter(uid=usuario,sid=asig,passed=False)
                                                 if AlAs.exists():                                ##ALUMNO YA MATRICULADO, ASIGNATURA POR APROBAR
                                                         logging.debug('Relacion existente')
                                                         AlAs=AlumAsig.objects.get(uid=usuario,sid=asig)
                                                         if AlAs.nminima<=nota:
                                                                 logging.debug('Aprobado')
-                                                                count=(AlAs.amount*(AlAs.grade/10)+AlAs.amount)
                                                                 AlAs.grade=nota
                                                                 AlAs.passed=True
                                                                 AlAs.save()
+                                                                count=((AlAs.nminima)*(AlAs.grade/10)*AlAs.amount+AlAs.amount)+count
                                                         else:
                                                                 logging.debug('Suspenso')
                                                                 AlAs.grade=0
@@ -64,7 +66,7 @@ def ImportExp(ruta,usuario):
                         os.remove(ruta)
                         os.remove('media/conversion.csv')
                         os.remove('media/conversion.xls')
-                        usuario.exp = None;
+                        usuario.doc = None
                         usuario.save()
                         logging.debug(count)
                         return count
@@ -73,22 +75,24 @@ def ImportExp(ruta,usuario):
                         logging.debug("Expediente no válido")
                         os.remove(ruta)
                         os.remove('media/conversion.csv')
-                        usuario.exp = None;
+                        usuario.doc = None
                         usuario.save()
                         return -1
 
-        except:
-                logging.debug("Expediente no válido")
-                os.remove(ruta)
-                usuario.exp = None;
-                usuario.save()
-                return -1
+	except Exception as e:
+		logging.debug("Expediente no válido (EXCEPCION)")
+		logging.exception(e)
+		os.remove(ruta)
+		usuario.doc = None
+		usuario.save()
+		return -1
 
 def ImportMatricula(ruta,usuario):
         # Creating a pdf file object
         try:
-                tabula.io.convert_into(ruta,'media/conversion.csv', pages='all')
+                convert_into(ruta,'media/conversion.csv', pages='all')
                 safe = pd.read_csv('media/conversion.csv',encoding='latin-1')
+                logging.debug(str(safe.columns[2]))
                 if (str(safe.columns[2])=='DATOS DE MATRICULA'):
                         file = pd.read_csv('media/conversion.csv',encoding='latin-1')
                         file.to_excel('media/conversion.xls', index = False,header=False) 
@@ -123,20 +127,21 @@ def ImportMatricula(ruta,usuario):
                         os.remove(ruta)
                         os.remove('media/conversion.csv')
                         os.remove('media/conversion.xls')
-                        usuario.exp = None;
+                        usuario.doc = None;
                         usuario.save()
                         return 0
                 else:
-                        logging.debug("Matrícula no válida")
-                        os.remove(ruta)
-                        os.remove('media/conversion.csv')
-                        usuario.exp = None;
-                        usuario.save()
-                        return 1
-        except:
-                logging.debug("Matrícula no válida")
+                    logging.debug("Matrícula no válida")
+                    os.remove(ruta)
+                    os.remove('media/conversion.csv')
+                    usuario.doc = None;
+                    usuario.save()
+                    return 1
+        except Exception as e:
+                logging.debug("Matrícula no válida (EXCEPCION)")
+                logging.exception(e)
                 os.remove(ruta)
-                usuario.exp = None;
+                usuario.doc = None
                 usuario.save()
                 return 1
 

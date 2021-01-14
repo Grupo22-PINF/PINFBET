@@ -68,12 +68,22 @@ def apostarasig(request, sid):
             monedas     = int(request.POST['ncoins'])
             nota      = request.POST['nminima']
 
+            do=1;
+
             if(monedas>(alumno.coins+apuesta.amount)):
+                do=0
                 return render(request,'polls/apuesta.html',{'error_message':"No tienes suficientes monedas para realizar esa apuesta.",'asignatura':apuesta.sid,'publi':publi})
             if(monedas<=0):
+                do=0
                 return render(request,'polls/apuesta.html',{'error_message':"Introduce un número de monedas superior a cero.",'asignatura':apuesta.sid,'publi':publi})
+            if(monedas<apuesta.amount):
+                do=0
+                return render(request,'polls/apuesta.html',{'error_message':"No puedes reducir el número de monedas ya apostadas.",'asignatura':apuesta.sid,'publi':publi})
+            if(float(nota)<float(apuesta.nminima)):
+                do=0
+                return render(request,'polls/apuesta.html',{'error_message':"No puedes reducir la nota mínima de la apuesta.",'asignatura':apuesta.sid,'publi':publi})
 
-            else:
+            if do==1:
                 alumno.coins = alumno.coins + apuesta.amount - monedas
                 alumno.save()
                 apuesta.amount = monedas
@@ -168,8 +178,8 @@ def SubirExpediente(request):
             form = AlumnoForm(request.POST,request.FILES, instance=alumno)
             if form.is_valid():
                 form.save()
-                if (alumno.exp):
-                    reward = ImportExp(str(alumno.exp.path),alumno)
+                if (alumno.doc):
+                    reward = ImportExp(str(alumno.doc.path),alumno)
                     if reward==-1:
                         context = {'alumno': alumno, 'latest_asignatura_list': latest_asignatura_list, 'form':form,'publi':publi, 'error_message':"Has subido un expediente no válido."}
                         return render(request, 'polls/subirfichero.html', context)
@@ -201,8 +211,8 @@ def SubirMatricula(request):
             form = AlumnoForm(request.POST,request.FILES, instance=alumno)
             if form.is_valid():
                 form.save()
-                if (alumno.exp):
-                    status = ImportMatricula(str(alumno.exp.path),alumno)
+                if (alumno.doc):
+                    status = ImportMatricula(str(alumno.doc.path),alumno)
                     if status==0:
                         return redirect('polls:profile')
                     if status==1:

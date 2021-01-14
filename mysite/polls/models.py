@@ -11,7 +11,7 @@ class Alumno(models.Model):
     email = models.CharField(max_length=50,default="dsada@gmail.com")
     coins = models.IntegerField(default=500)
     career = models.CharField(max_length=50)
-    exp = models.FileField(blank=True,null=True)
+    doc = models.FileField(blank=True,null=True)
 
     def __str__(self):
         return self.uid

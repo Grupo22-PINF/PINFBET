@@ -27,6 +27,7 @@
                 {% csrf_token %}
                     Sube tu matrícula más reciente:
                     {{form.as_p}}
+	            Esto puede tardar unos segundos.
                     <input class="si" type="submit" value="Subir" name="submit">
                 </form> 
                 <a href={%url 'polls:subirexpediente'%}><div class="perfil">Subir nuevo expediente.</div></a>

@@ -1,0 +1,402 @@
+html{
+  height:100%;
+}
+
+/* Add a black background color to the top navigation */
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0px;
+  background: -webkit-linear-gradient(to right, #535353, #363636);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #252525, #555555); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height:100%
+}
+
+/*
+Barra de navegación. 
+*/
+.topnav {
+background: -webkit-linear-gradient(to right, #92901e, #fffb00);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #f7ff83, #f8f406); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */;
+height:55px;
+position:absolute;
+margin-top:122px;
+width:100%;
+}
+
+.topnav ul{
+list-style: none;
+text-align: center;
+}
+
+/* Style the links inside the navigation bar */
+.topnav ul li {
+color: black;
+display:inline-block;
+padding: 0px 20px;
+text-decoration: none;
+font-size: 20px;
+}
+
+.topnav ul li a{
+text-decoration: none;
+color:black;
+}
+
+/* Change the color of links on hover */
+.topnav ul li a:hover {
+color: #0F4C75;
+text-decoration:none;
+}
+
+/* Menú de enlaces rápidos */
+/* The sidebar menu */
+.sidebar {
+  min-height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 286px; /* Set the width of the sidebar */
+  position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+  top: 1; /* Stay at the top */
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  margin-top: 177px;
+}
+
+/* The navigation menu links */
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  margin-top: 10%;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display:block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar sidebartitle{
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+/* Página central */
+.content{
+margin: auto;
+margin-left:306px;
+margin-right:306px;
+margin-top: 177px;
+position:absolute;
+border-radius: 4px;
+font-family: Arial, Helvetica, sans-serif;
+color: rgb(255, 255, 255);
+font-size:20px;
+overflow:overlay;
+text-align:justify;
+}
+
+.content a:link{
+
+  color: #FFDF1B;
+  text-decoration: none;
+
+}
+
+.content a:visited{
+
+  text-decoration: none;
+  color: #FFDF1B;
+}
+
+.content h1{
+font-size: 40px;
+margin-bottom: 15px;
+margin-top:0px;
+}
+
+/* Registrarse */
+.register{
+  margin-left: 600px;
+  margin-right: 500px;
+  width: 600px;
+  margin-top: 200px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.controls{
+  width: 100%;
+  background: #233342;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 2px solid #427af1;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+
+.register .register-button{
+  width: 100%;
+  background: #427af1;
+  border: none;
+  padding: 12px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.register .register-button:hover{
+  transform: scale(1.1, 1.1);
+}
+
+.titlecontainer{
+background-color: #0F4C75;
+margin-top:0px;
+position:absolute;
+width:100%;
+height:122px;
+}
+
+.titlecontainer .title{
+display:inline-block;
+padding-left:20px;
+}
+
+.buttons a.button{
+color: #FFDF1B;
+display:inline-block;
+padding-left:20px;
+border-radius:20px;
+background-color: transparent; 
+padding: 10px 30px;
+text-align: center;
+text-transform: uppercase;
+text-decoration: none;
+display: inline-block;
+transition: all 500ms ease;
+border: 2px solid #FFDF1B;
+font-size: 16px;
+margin: 0px 25px;
+z-index: 1;
+font-weight: 700;
+cursor: pointer;
+overflow: hidden;
+margin-bottom: 40px;
+}
+
+.buttons{
+float:right;
+text-decoration:none;
+}
+
+.button::before{
+content: '';
+position: relative;
+left: 0;
+width: 100%;
+height: 100%;
+background: #FFDF1B;
+z-index: -1;                                                                         
+}
+
+a.button:hover{
+background: linear-gradient(to right, #fdf3b3, #FFDF1B);
+transform: scale(1.2, 1.2);
+color: black;
+z-index: -1;
+}
+
+.page{
+  padding-top: 19px;
+}
+
+.page .register a{
+text-decoration:none;
+color: #FFDF1B;
+}
+
+.page .register ul{
+list-style: none;
+}
+
+.perfil {
+  text-align: center;
+  margin: 15px;
+  font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+} 
+
+.perfil:hover {
+  text-align: center;
+  margin: 15px;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #000000; 
+}
+
+
+.si{
+  color: white;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  text-align: center;
+  margin: 15px;
+  font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.si:hover{
+  text-align: center;
+  margin: 15px;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(21, 255, 0, 0.5), 0 0 20px rgb(9, 255, 0);
+  outline-color: rgba(51, 255, 112, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #48ff00; 
+}
+
+.no{
+  color: white;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  text-align: center;
+  margin: 15px;
+  font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.no:hover{
+  text-align: center;
+  margin: 15px;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 0, 0, 0.76), 0 0 20px rgb(255, 0, 0);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #000000; 
+}
+
+.ver{
+  height: 60px;
+  width: 700px;
+  color: white;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  text-align: center;
+  margin: 15px;
+  font: 600 1.5rem/1.25 'Montserrat', sans-serif;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.ver:hover{
+  text-align: center;
+  margin: 15px;
+  padding: 0.5em 0.75em;
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #000000; 
+}
+
+.publibar {
+  margin-top: 177px;
+  position: absolute;
+  right:0px;
+  color: #FFDF1B;
+  text-decoration:none;
+  align-content: center;
+  min-height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 286px; /* Set the width of the sidebar */
+  top: 1; /* Stay at the top */
+  background-color: #111; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  z-index: 1;
+}
+
+.publibar img{
+  height: 485px; /* Full-height: remove this if you want "auto" height */
+  width: 194px; /* Set the width of the sidebar */
+  border-radius:10px;
+  display:block;
+  margin:auto;
+  margin-top:20px;
+}
+
+.publibar h5{
+  text-align:center;
+  margin-top:5px;
+}
+
+.publibar h5 a:link{
+  text-decoration:none;
+  color: #FFDF1B;
+}
+
+.publibar h5 a:visited{
+  text-decoration:none;
+  color: #FFDF1B;
+}
+
+h1{
+  color: #FFDF1B;
+}
+
+h2{
+  color: #FFDF1B;
+}
+
+.content .li{
+  list-style-type: square;
+}

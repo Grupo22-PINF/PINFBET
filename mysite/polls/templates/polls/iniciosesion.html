@@ -11,9 +11,10 @@
             <input class="controls" placeholder="Ingrese su usuario" id="usuario" name="usuario" type="text" maxlength="20" required>
             <input class="controls" placeholder="Ingrese su contraseña"id="contrasena" name="contrasena" type="password" maxlength="20" required>
             <input class="register-button" type="submit" value="Iniciar sesión">
-            </form>
+        </form>
+        <h5>¿No estás registrado? <a href={% url "polls:registro"%}>Registrarse</a></h5>
 </div>
-</div> 
+</div>
 </body>
 {%endblock%}
-</html> 
+</html>

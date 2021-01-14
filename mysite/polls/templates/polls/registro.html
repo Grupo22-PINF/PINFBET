@@ -27,8 +27,9 @@
               <input type="checkbox" name="ac_politica" value="OK" required/>He leído y acepto la <a href="{% url 'polls:politica'%}" target=_blank>Política de Privacidad y los Términos del Servicio</a>.
               <input class="register-button" type="submit" value="Registrarse">
             </form>
+            <h5>¿Ya estás registrado? <a href={% url "polls:login"%}>Iniciar sesión</a></h5>
 </div>
-</div> 
+</div>
 {%endblock%}
 </body>
-</html> 
+</html>

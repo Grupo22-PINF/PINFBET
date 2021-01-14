@@ -3,12 +3,16 @@
     <div class='page'>
         <div class='content'>
         <h2>APOSTAR</h2>
-        Selecciona una asignatura sobre la cual apostar:
-        <ul>
-            {% for asignatura in latest_asignatura_list %}
-                <li><a href="{% url 'polls:apostarasig' sid=asignatura.sid.sid%}">{{ asignatura.sid.sid }} - {{ asignatura.sid.name }}</a></li>
-            {% endfor %}
-        </ul>
+        {%if latest_asignatura_list%}
+            Selecciona una asignatura sobre la cual apostar:
+            <ul>
+                {% for asignatura in latest_asignatura_list %}
+                    <li><a href="{% url 'polls:apostarasig' sid=asignatura.sid.sid%}">{{ asignatura.sid.sid }} - {{ asignatura.sid.name }}</a></li>
+                {% endfor %}
+            </ul>
+        {%else%}
+            No estás matriculado de ninguna asignatura.
+        {%endif%}
         </div>
     </div>
 {%endblock%}

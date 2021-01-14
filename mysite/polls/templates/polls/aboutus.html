@@ -6,13 +6,24 @@
             <p>
             PINFBet es una aplicación web de apuestas estudiantiles desarrollada por el grupo 22 de la asignatura de Proyectos Informáticos de la Universidad de Cádiz. <br><br>
 
-            El grupo 22 está compuesto por: 
+            El grupo 22 está compuesto por:
             <ul>
                 <li><a href={% url 'polls:perfilext' usuario="Miju"%}>Eliseo Fernández Monroy</a></li>
                 <li><a href={% url 'polls:perfilext' usuario="renjian"%}>Antonio de los Reyes Pérez</a></li>
                 <li><a href={% url 'polls:perfilext' usuario="ivan"%}>Iván López Ceballos</a></li>
                 <li><a href={% url 'polls:perfilext' usuario="_paquito"%}>Francisco Chanivet Sánchez</a></li>
-            </p>
+            </ul>
+
+            En PINFBet puedes apostar sobre tus resultados académicos de forma totalmente gratuita utilizando nuestra moneda virtual "PINFCoin". Para ello, deberás:
+            <ol>
+            <li>Registrarte en la plataforma.</li>
+            <li>Subir tu matrícula (obtenida desde tu <a href="https://portalservicios.uca.es/ServiciosApp/">Portal UCA</a>) en tu perfil.</li>
+            <li>Apostar desde la pestaña de apuestas, situada en el panel izquierdo. Ten en cuenta que comienzas con 500 PINFCoins para apostar al darte de alta en la plataforma.</li>
+            <li>Una vez la Universidad actualice tu expediente académico, deberás descargarlo desde tu <a href="https://portalservicios.uca.es/ServiciosApp/">Portal UCA</a> y actualizarlo en tu perfil.</li>
+            <li>Ganarás PINFCoins en función las notas que obtengas en las asignaturas sobre las que hayas apostado. Si has perdido todo tu dinero apostando, el sistema te dará 100 PINFCoins para que puedas seguir jugando.</li>
+            </ol>
+
+            Te animamos a recomendarle la página a tus amigos. Podrás agregarlos y ver sus apuestas de cara a la siguiente convocatoria.
         </div>
     </div> 
 {% endblock %}
