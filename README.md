@@ -1,4 +1,4 @@
-# ¡Bienvenidos a PINFBET!
+### ¡Bienvenidos a PINFBET!
 
 ![alt text](https://github.com/Grupo22-PINF/PINFBet/blob/master/pictures/logo.png)
 
